@@ -35,7 +35,8 @@ ignore_missing_imports = true
 
 [tool.ruff]
 src = [
-    "url-shortener",
+    "url_shortener",
+    "tests"
 ]
 
 exclude = [
@@ -82,7 +83,7 @@ select = [
     "F401", # Pyflakes (F)
     "S", # flake8-bandit (S)
     "LOG", # flake8-logging (LOG)
-    # "PT", # flake8-pytest-style (PT)  # todo: remove after delete unittest style tests
+    "PT", # flake8-pytest-style (PT)
     "RET", # flake8-return (RET)
     "ARG", # flake8-unused-arguments (ARG)
     "T20", # flake8-print (T20)
@@ -97,8 +98,4 @@ fixable = ["ALL"]
 unfixable = []
 
 [tool.ruff.lint.extend-per-file-ignores]
-"stuff.py" = [
-    "T20",
-]
-"url-shortener/tests/*" = ["S101"]
-
+"tests/*" = ["S101"]
