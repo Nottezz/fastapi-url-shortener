@@ -56,7 +56,7 @@ class ShortUrlStorage(BaseModel):
         logger.info("Created short url %s", short_url)
         return short_url
 
-    def create_or_rise_if_exists(self, short_url_in: ShortUrlCreate) -> ShortUrl:
+    def create_or_raise_if_exists(self, short_url_in: ShortUrlCreate) -> ShortUrl:
         if not self.exists(short_url_in.slug):
             return self.create(short_url_in)
 

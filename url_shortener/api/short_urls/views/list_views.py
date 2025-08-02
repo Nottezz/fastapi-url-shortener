@@ -39,7 +39,7 @@ def create_short_url(
     short_url_create: ShortUrlCreate,
 ) -> ShortUrl:
     try:
-        return storage.create_or_rise_if_exists(short_url_create)
+        return storage.create_or_raise_if_exists(short_url_create)
     except ShortUrlAlreadyExistsError:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
