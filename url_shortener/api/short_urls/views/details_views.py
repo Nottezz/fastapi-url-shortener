@@ -1,9 +1,9 @@
 from typing import Annotated
 
-from api.short_urls.crud import storage
 from fastapi import APIRouter, Depends, status
-from schemas.short_url import ShortUrlPartialUpdate, ShortUrlUpdate
 
+from api.short_urls.crud import storage
+from schemas.short_url import ShortUrlPartialUpdate, ShortUrlUpdate
 from url_shortener.api.short_urls.dependencies import prefetch_short_url
 from url_shortener.schemas.short_url import ShortUrl, ShortUrlRead
 

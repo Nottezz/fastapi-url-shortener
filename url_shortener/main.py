@@ -1,8 +1,8 @@
 import logging
 
-from app_lifespan import lifespan
 from fastapi import FastAPI
 
+from app_lifespan import lifespan
 from url_shortener.api import router as api_router
 from url_shortener.api.main_views import router as main_router
 from url_shortener.api.redirect_views import router as redirect_router
