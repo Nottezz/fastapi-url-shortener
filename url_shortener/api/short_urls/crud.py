@@ -43,7 +43,6 @@ class ShortUrlStorage(BaseModel):
         return None
 
     def exists(self, slug: str) -> bool:
-        logger.info("Short url <%s> exists", slug)
         return bool(
             redis.hexists(
                 name=self.hash_name,
@@ -56,13 +55,14 @@ class ShortUrlStorage(BaseModel):
             **short_url_in.model_dump(),
         )
         self.save_short_url(short_url)
-        logger.info("Created short url <%s>", short_url.slug)
+        logger.debug("Created short url <%s>", short_url_in.slug)
         return short_url
 
     def create_or_raise_if_exists(self, short_url_in: ShortUrlCreate) -> ShortUrl:
         if not self.exists(short_url_in.slug):
             return self.create(short_url_in)
 
+        logger.error("Short url <%s> already exists", short_url_in.slug)
         raise ShortUrlAlreadyExistsError(short_url_in.slug)
 
     def delete_by_slug(self, slug: str) -> None:
