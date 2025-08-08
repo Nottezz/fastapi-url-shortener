@@ -16,8 +16,8 @@ from ..conftest import build_short_url_create_random_slug
 class TestShortUrlStorageGetBySlug:
     def test_get_short_url_by_slug(self, short_url: ShortUrl) -> None:
         result = storage.get_by_slug(slug=short_url.slug)
-        assert result.target_url == AnyHttpUrl("https://example.com/")
-        assert result.summary == "A short url"
+        assert result.target_url == AnyHttpUrl("https://example.com/")  # type: ignore[union-attr]
+        assert result.summary == "A short url"  # type: ignore[union-attr]
 
 
 class TestShortUrlStorageExists:

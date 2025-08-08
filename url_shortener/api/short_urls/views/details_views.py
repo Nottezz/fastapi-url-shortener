@@ -32,7 +32,7 @@ def read_short_url_details(
 def update_short_url_details(
     url: ShortUrlBySlug, short_url_in: ShortUrlUpdate
 ) -> ShortUrl:
-    return storage.update(short_url=url, short_url_in=short_url_in)
+    return storage.update(short_url=url, short_url_in=short_url_in)  # type: ignore[no-any-return]
 
 
 @router.patch(
@@ -42,7 +42,7 @@ def update_short_url_details(
 def partial_update_short_url_details(
     url: ShortUrlBySlug, short_url_in: ShortUrlPartialUpdate
 ) -> ShortUrl:
-    return storage.update_partial(short_url=url, short_url_in=short_url_in)
+    return storage.update_partial(short_url=url, short_url_in=short_url_in)  # type: ignore[no-any-return]
 
 
 @router.delete(
