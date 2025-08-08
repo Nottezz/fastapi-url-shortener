@@ -78,8 +78,8 @@ class TestShortenerUpdateShortUrl:
 
         short_url_from_db = storage.get_by_slug(short_url.slug)
         assert short_url_from_db != shortener_before_update
-        assert short_url_from_db.summary == new_summary
-        assert short_url_from_db.target_url == new_target_url
+        assert short_url_from_db.summary == new_summary  # type: ignore [union-attr]
+        assert short_url_from_db.target_url == new_target_url  # type: ignore [union-attr]
 
 
 class TestShortenerPartialUpdateShortUrl:
@@ -119,7 +119,7 @@ class TestShortenerPartialUpdateShortUrl:
 
         short_url_from_db = storage.get_by_slug(short_url.slug)
         assert short_url_from_db != shortener_before_update
-        assert short_url_from_db.summary == new_summary
+        assert short_url_from_db.summary == new_summary  # type: ignore[union-attr]
 
 
 class TestShortenerDeleteShortUrl:

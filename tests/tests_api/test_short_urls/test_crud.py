@@ -71,7 +71,7 @@ class TestShortUrlStorageUpdate:
 
     def test_partial_update_short_url(self, short_url: ShortUrl) -> None:
         short_url_partial_update = ShortUrlPartialUpdate(
-            summary=short_url.summary * 2,
+            summary=short_url.summary * 2,  # type: ignore[operator]
         )
         source_summary = short_url.summary
         updated_short_url = storage.update_partial(
