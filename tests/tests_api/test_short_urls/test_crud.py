@@ -2,8 +2,7 @@ import pytest
 from pydantic import AnyHttpUrl
 from url_shortener.api.short_urls.crud import storage
 from url_shortener.exceptions import ShortUrlAlreadyExistsError
-
-from schemas.short_url import (
+from url_shortener.schemas.short_url import (
     ShortUrl,
     ShortUrlCreate,
     ShortUrlPartialUpdate,

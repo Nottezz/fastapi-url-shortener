@@ -1,4 +1,4 @@
-from config import settings
+from url_shortener.config import settings
 
 LOGGING_CONFIG = {
     "version": 1,

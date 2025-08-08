@@ -8,9 +8,9 @@ from _pytest.fixtures import SubRequest
 from fastapi import status
 from fastapi.testclient import TestClient
 from url_shortener.main import app
+from url_shortener.schemas.short_url import ShortUrl, ShortUrlCreate
 
-from schemas.short_url import ShortUrl, ShortUrlCreate
-from tests_api.conftest import build_short_url_create_random_slug
+from tests.tests_api.conftest import build_short_url_create_random_slug
 
 pytestmark = pytest.mark.apitest
 

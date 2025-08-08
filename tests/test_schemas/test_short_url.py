@@ -1,7 +1,6 @@
 import pytest
 from pydantic import ValidationError
-
-from schemas.short_url import (
+from url_shortener.schemas.short_url import (
     ShortUrl,
     ShortUrlCreate,
     ShortUrlPartialUpdate,

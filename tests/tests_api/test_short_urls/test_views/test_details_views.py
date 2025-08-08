@@ -5,11 +5,11 @@ from _pytest.fixtures import SubRequest
 from fastapi import status
 from fastapi.testclient import TestClient
 from pydantic import AnyHttpUrl
+from url_shortener.api.short_urls.crud import storage
 from url_shortener.main import app
+from url_shortener.schemas.short_url import ShortUrl, ShortUrlUpdate
 
-from api.short_urls.crud import storage
-from schemas.short_url import ShortUrl, ShortUrlUpdate
-from tests_api.conftest import create_short_url, create_short_url_random_slug
+from tests.tests_api.conftest import create_short_url, create_short_url_random_slug
 
 pytestmark = pytest.mark.apitest
 
