@@ -62,7 +62,7 @@ jobs:
         run: uv sync --locked --all-extras --dev
 
       - name: Run python tests
-        run: uv run pytest url_shortener --cov=url_shortener --cov-report=xml:coverage.xml
+        run: uv run pytest --cov=url_shortener --cov-report=xml:coverage.xml
         env:
           TESTING: 1
           SHORTENER__REDIS__CONNECTION__HOST: redis
