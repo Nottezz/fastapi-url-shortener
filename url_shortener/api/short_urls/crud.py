@@ -31,16 +31,19 @@ class ShortUrlStorage(BaseModel):
         )
 
     def get(self) -> list[ShortUrl]:
+        logger.info("Getting short urls list")
         return [
             ShortUrl.model_validate_json(value) for value in redis.hvals(self.hash_name)
         ]
 
     def get_by_slug(self, slug: str) -> ShortUrl | None:
         if data := redis.hget(name=self.hash_name, key=slug):
+            logger.info("Gettings short url <%s>", slug)
             return ShortUrl.model_validate_json(data)
         return None
 
     def exists(self, slug: str) -> bool:
+        logger.info("Short url <%s> exists", slug)
         return bool(
             redis.hexists(
                 name=self.hash_name,
@@ -53,7 +56,7 @@ class ShortUrlStorage(BaseModel):
             **short_url_in.model_dump(),
         )
         self.save_short_url(short_url)
-        logger.info("Created short url %s", short_url)
+        logger.info("Created short url <%s>", short_url.slug)
         return short_url
 
     def create_or_raise_if_exists(self, short_url_in: ShortUrlCreate) -> ShortUrl:
@@ -69,7 +72,7 @@ class ShortUrlStorage(BaseModel):
         )
 
     def delete(self, short_url: ShortUrl) -> None:
-        logger.info("Deleting short url %s", short_url)
+        logger.info("Deleting short url <%s>", short_url.slug)
         self.delete_by_slug(short_url.slug)
 
     def update(
@@ -80,7 +83,7 @@ class ShortUrlStorage(BaseModel):
         for field, value in short_url_in:
             setattr(short_url, field, value)
         self.save_short_url(short_url)
-        logger.info("Updated short url %s", short_url)
+        logger.info("Updated short url <%s>", short_url.slug)
         return short_url
 
     def update_partial(
@@ -91,7 +94,7 @@ class ShortUrlStorage(BaseModel):
         for field, value in short_url_in.model_dump(exclude_unset=True).items():
             setattr(short_url, field, value)
         self.save_short_url(short_url)
-        logger.info("Partial updated short url %s", short_url)
+        logger.info("Partial updated short url <%s>", short_url.slug)
         return short_url
 
 
