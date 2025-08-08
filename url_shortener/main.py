@@ -1,18 +1,14 @@
-import logging
+import logging.config
 
 from fastapi import FastAPI
 
 from app_lifespan import lifespan
+from logging_config import LOGGING_CONFIG
 from url_shortener.api import router as api_router
 from url_shortener.api.main_views import router as main_router
 from url_shortener.api.redirect_views import router as redirect_router
-from url_shortener.config import settings
 
-logging.basicConfig(
-    level=settings.logging.log_level,
-    format=settings.logging.log_format,
-    datefmt=settings.logging.log_date_format,
-)
+logging.config.dictConfig(LOGGING_CONFIG)
 
 app = FastAPI(
     lifespan=lifespan,
