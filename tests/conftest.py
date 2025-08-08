@@ -1,3 +1,4 @@
+import logging
 from os import getenv
 
 import pytest
@@ -9,3 +10,8 @@ def check_testing_env() -> None:
         pytest.exit(
             "Environment is not ready for testing",
         )
+
+
+@pytest.fixture(autouse=True)
+def disable_logging() -> None:
+    logging.getLogger().setLevel(logging.CRITICAL)
