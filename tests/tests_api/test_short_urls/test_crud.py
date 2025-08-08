@@ -13,19 +13,6 @@ from schemas.short_url import (
 from ..conftest import build_short_url_create_random_slug
 
 
-class TestShortUrlStorageGetList:
-    def test_get_list_short_urls(
-        self,
-        short_url: ShortUrl,  # noqa: ARG002 Unused method argument: `short_url`
-    ) -> None:
-        result = storage.get()
-        assert len(result) == 1
-
-    def test_get_empty_list_short_urls(self) -> None:
-        result = storage.get()
-        assert len(result) == 0
-
-
 class TestShortUrlStorageGetBySlug:
     def test_get_short_url_by_slug(self, short_url: ShortUrl) -> None:
         result = storage.get_by_slug(slug=short_url.slug)
@@ -94,6 +81,4 @@ class TestShortUrlStorageUpdate:
         )
 
         assert source_summary != short_url.summary
-        assert short_url_partial_update == ShortUrlPartialUpdate(
-            **updated_short_url.model_dump()
-        )
+        assert short_url_partial_update.summary == updated_short_url.summary

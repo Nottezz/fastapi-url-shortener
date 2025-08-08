@@ -58,11 +58,11 @@ def create_short_url(
 
 
 def create_short_url_random_slug(
-    description: str = "A short url",
+    summary: str = "A short url",
     target_url: str | AnyHttpUrl = "https://example.com",
 ) -> ShortUrl:
     short_url_in = build_short_url_create_random_slug(
-        description=description,
+        description=summary,
         target_url=target_url,
     )
     return storage.create(short_url_in)
