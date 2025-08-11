@@ -2,6 +2,7 @@
 
 > A service for creating short links.
 
+[![Python checks 🐍](https://github.com/Nottezz/fastapi-url-shortener/actions/workflows/python-check.yml/badge.svg?event=pull_request)](https://github.com/Nottezz/fastapi-url-shortener/actions/workflows/python-check.yml)
 [![FastAPI](https://img.shields.io/badge/framework-FastAPI-green)](https://fastapi.tiangolo.com/)
 [![Python version](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/)
 [![mypy: strict](https://img.shields.io/badge/mypy-strict-blueviolet)](http://mypy-lang.org/)
