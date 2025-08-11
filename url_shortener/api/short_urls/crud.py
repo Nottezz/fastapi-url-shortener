@@ -31,12 +31,14 @@ class ShortUrlStorage(BaseModel):
         )
 
     def get(self) -> list[ShortUrl]:
+        logger.info("Getting short urls list")
         return [
             ShortUrl.model_validate_json(value) for value in redis.hvals(self.hash_name)
         ]
 
     def get_by_slug(self, slug: str) -> ShortUrl | None:
         if data := redis.hget(name=self.hash_name, key=slug):
+            logger.info("Gettings short url <%s>", slug)
             return ShortUrl.model_validate_json(data)
         return None
 
@@ -53,13 +55,14 @@ class ShortUrlStorage(BaseModel):
             **short_url_in.model_dump(),
         )
         self.save_short_url(short_url)
-        logger.info("Created short url %s", short_url)
+        logger.debug("Created short url <%s>", short_url_in.slug)
         return short_url
 
-    def create_or_rise_if_exists(self, short_url_in: ShortUrlCreate) -> ShortUrl:
+    def create_or_raise_if_exists(self, short_url_in: ShortUrlCreate) -> ShortUrl:
         if not self.exists(short_url_in.slug):
             return self.create(short_url_in)
 
+        logger.error("Short url <%s> already exists", short_url_in.slug)
         raise ShortUrlAlreadyExistsError(short_url_in.slug)
 
     def delete_by_slug(self, slug: str) -> None:
@@ -69,7 +72,7 @@ class ShortUrlStorage(BaseModel):
         )
 
     def delete(self, short_url: ShortUrl) -> None:
-        logger.info("Deleting short url %s", short_url)
+        logger.info("Deleting short url <%s>", short_url.slug)
         self.delete_by_slug(short_url.slug)
 
     def update(
@@ -80,7 +83,7 @@ class ShortUrlStorage(BaseModel):
         for field, value in short_url_in:
             setattr(short_url, field, value)
         self.save_short_url(short_url)
-        logger.info("Updated short url %s", short_url)
+        logger.info("Updated short url <%s>", short_url.slug)
         return short_url
 
     def update_partial(
@@ -91,7 +94,7 @@ class ShortUrlStorage(BaseModel):
         for field, value in short_url_in.model_dump(exclude_unset=True).items():
             setattr(short_url, field, value)
         self.save_short_url(short_url)
-        logger.info("Partial updated short url %s", short_url)
+        logger.info("Partial updated short url <%s>", short_url.slug)
         return short_url
 
 

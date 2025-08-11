@@ -26,7 +26,7 @@ class ShortUrlCreate(ShortUrlBase):
         max_length=10,
         title="URL slug",
     )
-    summary: str | None = Field(
+    summary: str | None = Field(  # type: ignore[assignment]
         None,
         min_length=10,
         max_length=100,
@@ -65,7 +65,7 @@ class ShortUrlRead(ShortUrlBase):
         max_length=10,
         title="URL slug",
     )
-    summary: str | None = Field(
+    summary: str | None = Field(  # type: ignore[assignment]
         None,
         min_length=10,
         max_length=100,
@@ -84,7 +84,7 @@ class ShortUrl(ShortUrlBase):
         max_length=10,
         title="URL slug",
     )
-    summary: str | None = Field(
+    summary: str | None = Field(  # type: ignore[assignment]
         None,
         min_length=10,
         max_length=100,
