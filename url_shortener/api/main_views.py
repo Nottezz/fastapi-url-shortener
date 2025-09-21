@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import datetime
 from typing import Any
 
 from fastapi import APIRouter, Request
@@ -14,7 +14,6 @@ app_launch_time = datetime.now()
 @router.get("/", include_in_schema=False)
 def root(request: Request) -> HTMLResponse:
     context: dict[str, Any] = {}
-    today = date.today()
     features = [
         "Managing short URL: create, update, delete",
         "Custom alias for short links",
@@ -24,7 +23,6 @@ def root(request: Request) -> HTMLResponse:
         "Bulk creation and import/export of short URLs",
     ]
     context.update(
-        today=today,
         features=features,
     )
     return templates.TemplateResponse(
