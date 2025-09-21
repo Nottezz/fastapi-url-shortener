@@ -35,13 +35,8 @@ def root(request: Request) -> HTMLResponse:
 @router.get("/health")
 def check_health() -> Health:
     uptime = (datetime.now() - app_launch_time).total_seconds()
-    docs_url = request.url.replace(
-        path="/docs",
-        query="",
-    )
     return Health(
         status="OK",
         current_date=datetime.now().isoformat(sep=" "),
         current_uptime=int(uptime),
-        docs_url=str(docs_url),
     )
