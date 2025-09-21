@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    About - {{ super() }}
+{% endblock %}
+
+{% block main %}
+    <div class="container py-5">
+        <h1 class="mb-4">About the Project</h1>
+
+        <p>
+            <strong>FastAPI URL Shortener</strong> is a lightweight and efficient service
+            that allows users to create, manage, and share short links.
+            It is built with <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a>,
+            ensuring high performance and modern Pythonic design.
+        </p>
+
+        <h2 class="mt-5">Purpose</h2>
+        <p>
+            The project was created to provide a self-hosted alternative
+            to commercial URL shortening platforms. It helps teams and individuals
+            generate short, memorable links that can be easily shared
+            in documents, messengers, or social networks.
+        </p>
+
+        <h2 class="mt-5">Technology Stack</h2>
+        <p>
+            The service is built on top of modern technologies to ensure reliability and scalability:
+        </p>
+        <ul>
+            <li><strong>FastAPI</strong> – asynchronous web framework</li>
+            <li><strong>Redis</strong> – in-memory database for fast storage and caching</li>
+            <li><strong>Docker</strong> – containerized environment for deployment</li>
+            <li><strong>Pytest</strong> – testing framework for ensuring code quality</li>
+        </ul>
+
+        <h2 class="mt-5">Vision</h2>
+        <p>
+            The goal of the project is to provide an open-source, privacy-friendly tool
+            for URL shortening that you can fully control. Future plans include
+            advanced analytics dashboards, integration with messaging platforms,
+            and team collaboration features.
+        </p>
+
+        <h2 class="mt-5">Social</h2>
+        <p>
+            <a href="https://t.me/Nottezz">Contact the author</a>
+        </p>
+    </div>
+{% endblock %}
