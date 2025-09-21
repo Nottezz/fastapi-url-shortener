@@ -30,7 +30,12 @@ def root(request: Request) -> HTMLResponse:
     )
 
 
-@router.get("/health")
+@router.get("/about/", include_in_schema=False)
+def about_page(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(request=request, name="about.html")
+
+
+@router.get("/health/")
 def check_health() -> Health:
     uptime = (datetime.now() - app_launch_time).total_seconds()
     return Health(
