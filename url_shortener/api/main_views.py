@@ -11,8 +11,8 @@ router = APIRouter()
 app_launch_time = datetime.now()
 
 
-@router.get("/", include_in_schema=False)
-def root(request: Request) -> HTMLResponse:
+@router.get("/", include_in_schema=False, name="home")
+def home_page(request: Request) -> HTMLResponse:
     context: dict[str, Any] = {}
     features = [
         "Managing short URL: create, update, delete",
@@ -30,7 +30,7 @@ def root(request: Request) -> HTMLResponse:
     )
 
 
-@router.get("/about/", include_in_schema=False)
+@router.get("/about/", include_in_schema=False, name="about")
 def about_page(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(request=request, name="about.html")
 
