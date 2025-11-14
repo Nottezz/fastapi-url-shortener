@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, status
 
-from url_shortener.api.short_urls.crud import storage
+from storage.short_url.crud import storage
 from url_shortener.api.short_urls.dependencies import prefetch_short_url
 from url_shortener.schemas.short_url import (
     ShortUrl,
