@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, status
 
-from storage.short_url.crud import storage
 from url_shortener.exceptions import ShortUrlAlreadyExistsError
 from url_shortener.schemas.short_url import ShortUrl, ShortUrlCreate, ShortUrlRead
+from url_shortener.storage.short_url.crud import storage
 
 router = APIRouter(
     prefix="/shortener",

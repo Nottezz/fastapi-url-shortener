@@ -3,9 +3,9 @@ import logging
 from pydantic import BaseModel
 from redis import Redis
 
-from config import settings
-from exceptions import ShortUrlAlreadyExistsError
-from schemas.short_url import (
+from url_shortener.config import settings
+from url_shortener.exceptions import ShortUrlAlreadyExistsError
+from url_shortener.schemas.short_url import (
     ShortUrl,
     ShortUrlCreate,
     ShortUrlPartialUpdate,
