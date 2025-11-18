@@ -10,7 +10,7 @@ from url_shortener.storage.short_url.crud import storage
 def get_short_url_storage(
     request: Request,
 ) -> ShortUrlStorage:
-    return request.app.state.short_url_storage
+    return request.app.state.short_url_storage  # type: ignore[no-any-return]
 
 
 GetShortUrlStorage = Annotated[ShortUrlStorage, Depends(get_short_url_storage)]
