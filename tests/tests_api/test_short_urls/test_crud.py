@@ -1,6 +1,5 @@
 import pytest
 from pydantic import AnyHttpUrl
-from url_shortener.api.short_urls.crud import storage
 from url_shortener.exceptions import ShortUrlAlreadyExistsError
 from url_shortener.schemas.short_url import (
     ShortUrl,
@@ -8,6 +7,7 @@ from url_shortener.schemas.short_url import (
     ShortUrlPartialUpdate,
     ShortUrlUpdate,
 )
+from url_shortener.storage.short_url.crud import storage
 
 from ..conftest import build_short_url_create_random_slug
 

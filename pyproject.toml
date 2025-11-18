@@ -24,13 +24,14 @@ dev = [
 ]
 
 [tool.uv]
-required-version = "~=0.8.2"
+required-version = "~=0.9.8"
 
 [tool.pytest.ini_options]
 minversion = "8.3"
 addopts = ["-ra", "--strict-markers"]
 markers = [
-    "apitest: test any api call"
+    "apitest: test any api call",
+    "templatetest: test any http HTML template page"
 ]
 
 [tool.mypy]

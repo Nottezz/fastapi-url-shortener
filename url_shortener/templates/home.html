@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home - {{ super() }}
+{% endblock %}
+
+{% block main %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">ShortLink — Simplify Your URLs</h1>
+        <p class="lead text-muted">A modern, fast, and secure URL shortener that helps you share links easily and track their performance.</p>
+        <div class="mt-4">
+            <a href="/docs" class="btn btn-primary btn-lg me-3">
+                <i class="bi bi-journal-code me-1"></i> Open Swagger Docs
+            </a>
+            <a href="https://github.com/Nottezz/fastapi-url-shortener" target="_blank" class="btn btn-outline-dark btn-lg">
+                <i class="bi bi-github me-1"></i> View on GitHub
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <i class="bi bi-link-45deg display-5 text-primary mb-3"></i>
+                    <h5 class="card-title">Shorten Links</h5>
+                    <p class="card-text text-muted">Turn long, complicated URLs into short, shareable links in just one click.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <i class="bi bi-bar-chart-line display-5 text-success mb-3"></i>
+                    <h5 class="card-title">Track Performance</h5>
+                    <p class="card-text text-muted">Get insights into how your links are performing with detailed click analytics.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <i class="bi bi-shield-lock display-5 text-danger mb-3"></i>
+                    <h5 class="card-title">Secure and Reliable</h5>
+                    <p class="card-text text-muted">Your data and links are protected with best-in-class security standards.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <p class="text-muted small">
+            Built with ❤️ using FastAPI, Bootstrap, and modern web technologies.
+        </p>
+    </div>
+</div>
+{% endblock %}
