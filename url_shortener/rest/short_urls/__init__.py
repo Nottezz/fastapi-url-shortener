@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 
+from .create_view import router as create_view
 from .list_view import router as list_view
 
 router = APIRouter(
@@ -7,3 +8,4 @@ router = APIRouter(
     tags=["URL Shortener"],
 )
 router.include_router(list_view)
+router.include_router(create_view)
