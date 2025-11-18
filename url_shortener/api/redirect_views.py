@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from starlette.responses import RedirectResponse
 
-from dependencies.short_url import UrlBySlug
+from url_shortener.dependencies.short_url import UrlBySlug
 
 router = APIRouter(
     prefix="/redirect",

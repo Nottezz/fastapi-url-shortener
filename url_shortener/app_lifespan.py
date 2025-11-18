@@ -3,8 +3,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from storage.short_url import ShortUrlStorage
 from url_shortener.config import settings
+from url_shortener.storage.short_url import ShortUrlStorage
 
 
 @asynccontextmanager

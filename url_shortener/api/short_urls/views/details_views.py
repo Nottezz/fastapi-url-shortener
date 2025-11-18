@@ -1,13 +1,13 @@
 from fastapi import APIRouter, status
 
-from dependencies.short_url import UrlBySlug
-from storage.short_url.crud import storage
+from url_shortener.dependencies.short_url import UrlBySlug
 from url_shortener.schemas.short_url import (
     ShortUrl,
     ShortUrlPartialUpdate,
     ShortUrlRead,
     ShortUrlUpdate,
 )
+from url_shortener.storage.short_url.crud import storage
 
 router = APIRouter(prefix="/{slug}")
 

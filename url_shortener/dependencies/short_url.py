@@ -2,9 +2,9 @@ from typing import Annotated
 
 from fastapi import Depends, HTTPException, Request, status
 
-from schemas.short_url import ShortUrl
-from storage.short_url import ShortUrlStorage
-from storage.short_url.crud import storage
+from url_shortener.schemas.short_url import ShortUrl
+from url_shortener.storage.short_url import ShortUrlStorage
+from url_shortener.storage.short_url.crud import storage
 
 
 def get_short_url_storage(
