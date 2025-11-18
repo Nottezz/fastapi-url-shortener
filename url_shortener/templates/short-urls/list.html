@@ -27,7 +27,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
                             {% for item in list_urls %}
                                 <tr>
                                     <!-- Short URL (redirect link) -->
@@ -53,6 +52,13 @@
                                            class="btn btn-sm btn-outline-primary px-2 py-1">
                                             <i class="bi bi-pencil-square me-1"></i> Edit
                                         </a>
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-danger d-flex align-items-center px-2 py-1"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modal-confirm-delete-{{ item.slug }}">
+                                            <i class="bi bi-trash me-1"></i> Delete
+                                        </button>
+                                        {% include "short-urls/components/delete_modal_window.html" %}
                                     </td>
 
                                 </tr>
@@ -83,4 +89,14 @@
         {% endif %}
 
     </div>
+    <style>
+        tr.htmx-swapping td {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+    </style>
+    <script
+            src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"
+            integrity="sha384-ZBXiYtYQ6hJ2Y0ZNoYuI+Nq5MqWBr+chMrS/RkXpNzQCApHEhOt2aY8EJgqwHLkJ"
+            crossorigin="anonymous"></script>
 {% endblock %}
