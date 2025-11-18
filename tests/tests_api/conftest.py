@@ -7,8 +7,7 @@ from fastapi.testclient import TestClient
 from pydantic import AnyHttpUrl
 from url_shortener.main import app
 from url_shortener.schemas.short_url import ShortUrl, ShortUrlCreate
-
-from storage.short_url.crud import storage
+from url_shortener.storage.short_url.crud import storage
 
 
 @pytest.fixture
