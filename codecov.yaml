@@ -13,6 +13,14 @@ coverage:
         threshold: 5%
         if_ci_failed: error
 
+comment:
+  layout: "diff, flags, files"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+  hide_project_coverage: false
+
 parsers:
   gcov:
     branch_detection:
