@@ -1,7 +1,6 @@
 from typing import Annotated
 
-from fastapi import Depends, HTTPException, Request
-from starlette import status
+from fastapi import Depends, HTTPException, Request, status
 
 from schemas.short_url import ShortUrl
 from storage.short_url import ShortUrlStorage
