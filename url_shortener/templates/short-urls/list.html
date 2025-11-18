@@ -5,69 +5,81 @@
 {% endblock %}
 
 {% block main %}
-<div class="container py-5">
+    <div class="container py-5">
 
-    <h1 class="mb-4 text-center">All Shortened URLs</h1>
+        <h1 class="mb-4 text-center">All Shortened URLs</h1>
 
-    <p class="text-center text-muted mb-5">
-        Below is the list of all shortened links created via the service.
-    </p>
+        <p class="text-center text-muted mb-5">
+            Below is the list of all shortened links created via the service.
+        </p>
 
-    {% if list_urls %}
-        <div class="card shadow-sm">
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0 align-middle">
-                        <thead class="table-light">
+        {% if list_urls %}
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 align-middle">
+                            <thead class="table-light">
                             <tr>
                                 <th scope="col">Short URL</th>
                                 <th scope="col">Target URL</th>
                                 <th scope="col">Summary</th>
-{#                                <th scope="col" class="text-end">Actions</th>#}
+                                {#                                <th scope="col" class="text-end">Actions</th>#}
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
 
-                        {% for item in list_urls %}
-                            <tr>
-                                <!-- Short URL (redirect link) -->
-                                <td>
-                                    <code>{{ item.slug }}</code>
-                                </td>
+                            {% for item in list_urls %}
+                                <tr>
+                                    <!-- Short URL (redirect link) -->
+                                    <td>
+                                        <code>{{ item.slug }}</code>
+                                    </td>
 
-                                <!-- Full target URL -->
-                                <td class="text-truncate" style="max-width: 350px;">
-                                    <a href="{{ item.target_url }}" target="_blank">
-                                        {{ item.target_url }}
-                                    </a>
-                                </td>
+                                    <!-- Full target URL -->
+                                    <td class="text-truncate" style="max-width: 350px;">
+                                        <a href="{{ item.target_url }}" target="_blank">
+                                            {{ item.target_url }}
+                                        </a>
+                                    </td>
 
-                                <!-- Summary -->
-                                <td>
-                                    {{ item.summary or "-" }}
-                                </td>
+                                    <!-- Summary -->
+                                    <td>
+                                        {{ item.summary or "-" }}
+                                    </td>
 
-                                <!-- Actions -->
-{#                                <td class="text-end">#}
-{#                                    <a href="{{ request.url_for('short-url:detail-view', slug=item.slug) }}"#}
-{#                                       class="btn btn-sm btn-outline-primary">#}
-{#                                        Details#}
-{#                                    </a>#}
-{#                                </td>#}
-                            </tr>
-                        {% endfor %}
+                                    <!-- Actions -->
+                                    {#                                <td class="text-end">#}
+                                    {#                                    <a href="{{ request.url_for('short-url:detail-view', slug=item.slug) }}"#}
+                                    {#                                       class="btn btn-sm btn-outline-primary">#}
+                                    {#                                        Details#}
+                                    {#                                    </a>#}
+                                    {#                                </td>#}
+                                </tr>
+                            {% endfor %}
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-end p-3">
+                            <a href="{{ url_for('short-url:create-view') }}" class="btn btn-primary">
+                                Add new short URL
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-    {% else %}
-        <div class="alert alert-info text-center mt-5">
-            No short URLs created yet.
-        </div>
-    {% endif %}
+        {% else %}
+            <div class="alert alert-info text-center mt-5">
+                No short URLs created yet.
+                <div class="mt-4">
+                    <a href="{{ url_for('short-url:create-view') }}" class="btn btn-primary">
+                        Add first link
+                    </a>
+                </div>
 
-</div>
+            </div>
+        {% endif %}
+
+    </div>
 {% endblock %}
