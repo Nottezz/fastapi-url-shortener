@@ -67,6 +67,7 @@ jobs:
           TESTING: 1
           SHORTENER__REDIS__CONNECTION__HOST: redis
           SHORTENER__REDIS__CONNECTION__PORT: 6379
+          SHORTENER__SESSION_SECRET_KEY: "ABC"
 
       - name: Upload artefacts
         uses: actions/upload-artifact@v4
