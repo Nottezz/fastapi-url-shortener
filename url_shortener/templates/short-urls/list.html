@@ -12,6 +12,11 @@
         <p class="text-center text-muted mb-5">
             Below is the list of all shortened links created via the service.
         </p>
+        {% for msg in get_flashed_messages(request) %}
+            <div class="alert alert-{{ msg.category }} shadow-sm">
+                {{ msg.message }}
+            </div>
+        {% endfor %}
 
         {% if list_urls %}
             <div class="card shadow-sm">

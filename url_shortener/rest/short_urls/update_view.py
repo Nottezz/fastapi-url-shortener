@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import ValidationError
 
 from url_shortener.dependencies.short_url import GetShortUrlStorage, UrlBySlug
+from url_shortener.misc.flash_messages import flash
 from url_shortener.schemas.short_url import ShortUrlUpdate
 from url_shortener.services.short_urls.form_response_helper import FormResponseHelper
 
@@ -45,6 +46,11 @@ async def update_short_url(
             )
 
     storage.update(url, short_url_update)
+    flash(
+        request=request,
+        message=f"Successfully updated {url.target_url}.",
+        category="success",
+    )
     return RedirectResponse(
         url=request.url_for("short-url:list-view"),
         status_code=status.HTTP_303_SEE_OTHER,

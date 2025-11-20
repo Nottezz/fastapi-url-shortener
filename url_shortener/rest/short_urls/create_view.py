@@ -4,6 +4,7 @@ from pydantic import ValidationError
 
 from url_shortener.dependencies.short_url import GetShortUrlStorage
 from url_shortener.exceptions import ShortUrlAlreadyExistsError
+from url_shortener.misc.flash_messages import flash
 from url_shortener.schemas.short_url import ShortUrlCreate
 from url_shortener.services.short_urls.form_response_helper import FormResponseHelper
 
@@ -41,6 +42,11 @@ async def add_short_url(
             "slug": f"URL with '{short_url_create.slug}' already exists.",
         }
     else:
+        flash(
+            request=request,
+            message=f"You added {short_url_create.slug} to the list.",
+            category="success",
+        )
         return RedirectResponse(
             url=request.url_for("short-url:list-view"),
             status_code=status.HTTP_303_SEE_OTHER,
